@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="edition_controle_releve_new" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="292"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="plgrel_id" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select 1 from dual]]>
+	</queryString>
+	<field name="1" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="134" splitType="Stretch">
+			<line>
+				<reportElement x="14" y="93" width="530" height="1" forecolor="#006699"/>
+			</line>
+			<staticText>
+				<reportElement x="82" y="29" width="383" height="33" forecolor="#006699"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arabic" size="18" isBold="true" isItalic="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[الشركة الوطنية لاستغلال و توزيع المياه]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="82" y="53" width="383" height="20" forecolor="#006699"/>
+				<textElement textAlignment="Center">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[SOCIETE NATIONALE D’EXPLOITATION ET DE DISTRIBUTION DES EAUX
+]]></text>
+			</staticText>
+			<image>
+				<reportElement x="465" y="10" width="79" height="79"/>
+				<imageExpression><![CDATA[$P{SUBREPORT_DIR} +"/logo.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="14" y="10" width="79" height="79"/>
+			</image>
+			<staticText>
+				<reportElement x="132" y="104" width="290" height="30" forecolor="#0066CC"/>
+				<textElement>
+					<font fontName="Serif" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Compte rendu des controles]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="455" y="121" width="100" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Arial Narrow" size="8" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="86" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="80"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="plgrel_id">
+					<subreportParameterExpression><![CDATA[$P{plgrel_id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "edition_controle_releve_manque.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="94">
+			<break>
+				<reportElement x="0" y="4" width="100" height="1"/>
+			</break>
+			<subreport>
+				<reportElement x="0" y="7" width="555" height="80"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="plgrel_id">
+					<subreportParameterExpression><![CDATA[$P{plgrel_id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "edition_controle_sans_index.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="95">
+			<subreport>
+				<reportElement x="0" y="8" width="555" height="80"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="plgrel_id">
+					<subreportParameterExpression><![CDATA[$P{plgrel_id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "edition_controle_releve_ctrl.jasper"]]></subreportExpression>
+			</subreport>
+			<break>
+				<reportElement x="0" y="4" width="100" height="1"/>
+			</break>
+		</band>
+		<band height="100">
+			<break>
+				<reportElement x="0" y="5" width="100" height="1"/>
+			</break>
+			<subreport>
+				<reportElement x="0" y="15" width="555" height="80"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="plgrel_id">
+					<subreportParameterExpression><![CDATA[$P{plgrel_id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "edition_controle_prorata.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="104" splitType="Stretch">
+			<staticText>
+				<reportElement x="200" y="80" width="251" height="20" forecolor="#006699"/>
+				<textElement>
+					<font fontName="Arabic" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[E-mail:sonede@sonede.com.tn البريد الإلكتروني]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="339" y="37" width="195" height="20" forecolor="#006699"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arabic" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[السجل التجاري س ت ش 0111892008  R.C.C ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="237" y="37" width="84" height="20" forecolor="#006699"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arabic"/>
+				</textElement>
+				<text><![CDATA[Tél : 71 887 000]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="271" y="60" width="64" height="20" forecolor="#006699"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arabic" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[الفاكس]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="40" width="184" height="20" forecolor="#006699"/>
+				<textElement>
+					<font fontName="Arabic" size="10" isBold="false" isItalic="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[شارع سليمان بن سليمان المنار 2 - تونس 2092 ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="339" y="58" width="195" height="20" forecolor="#006699"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arabic" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[المعرف الجبائي   Matricule fiscal   1455J/A/M/000 ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="60" width="224" height="20" forecolor="#006699"/>
+				<textElement>
+					<font fontName="Arabic" size="10" isBold="false" isItalic="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[AV.Slimane ben slimane el manar 2 - tunis 2092]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="236" y="60" width="83" height="20" forecolor="#006699"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arabic"/>
+				</textElement>
+				<text><![CDATA[FAX:71 871 000]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="279" y="37" width="54" height="20" forecolor="#006699"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arabic" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[الهاتف]]></text>
+			</staticText>
+			<line>
+				<reportElement x="10" y="22" width="530" height="1" forecolor="#006699"/>
+			</line>
+			<textField>
+				<reportElement x="237" y="3" width="34" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}+"/"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="271" y="3" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
