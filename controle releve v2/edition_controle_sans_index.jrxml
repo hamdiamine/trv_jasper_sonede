@@ -22,7 +22,7 @@
 	<pageHeader>
 		<band height="57">
 			<staticText>
-				<reportElement mode="Opaque" x="22" y="14" width="505" height="23" backcolor="#F2F2F2"/>
+				<reportElement mode="Opaque" x="22" y="14" width="509" height="23" backcolor="#F2F2F2"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
@@ -43,7 +43,7 @@
 				<text><![CDATA[PDL	]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="132" y="37" width="27" height="20"/>
+				<reportElement x="132" y="37" width="31" height="20"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -57,7 +57,7 @@
 				<text><![CDATA[Tournée]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="159" y="37" width="31" height="20"/>
+				<reportElement x="163" y="37" width="31" height="20"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -71,7 +71,7 @@
 				<text><![CDATA[Ordre]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="190" y="37" width="94" height="20"/>
+				<reportElement x="194" y="37" width="94" height="20"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -85,7 +85,7 @@
 				<text><![CDATA[Compteur]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="284" y="37" width="34" height="20"/>
+				<reportElement x="288" y="37" width="34" height="20"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -99,7 +99,7 @@
 				<text><![CDATA[A.Index	]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="421" y="37" width="106" height="20"/>
+				<reportElement x="425" y="37" width="106" height="20"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -113,7 +113,7 @@
 				<text><![CDATA[Client]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="318" y="37" width="103" height="20"/>
+				<reportElement x="322" y="37" width="103" height="20"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -145,7 +145,7 @@
 				<textFieldExpression><![CDATA[$F{SPT_REFE}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="132" y="0" width="27" height="20"/>
+				<reportElement stretchType="RelativeToBandHeight" x="132" y="0" width="31" height="20"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -159,7 +159,7 @@
 				<textFieldExpression><![CDATA[$F{ROU_CODE}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="159" y="0" width="31" height="20"/>
+				<reportElement stretchType="RelativeToBandHeight" x="163" y="0" width="31" height="20"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -173,7 +173,7 @@
 				<textFieldExpression><![CDATA[$F{SPT_ROUTEORDER}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="190" y="0" width="94" height="20"/>
+				<reportElement stretchType="RelativeToBandHeight" x="194" y="0" width="94" height="20"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -187,7 +187,7 @@
 				<textFieldExpression><![CDATA[$F{EQU_REALNUMBER}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="284" y="0" width="34" height="20"/>
+				<reportElement stretchType="RelativeToBandHeight" x="288" y="0" width="34" height="20"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -201,7 +201,7 @@
 				<textFieldExpression><![CDATA[$F{AINDEX}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="421" y="0" width="106" height="20"/>
+				<reportElement stretchType="RelativeToBandHeight" x="425" y="0" width="106" height="20"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -215,7 +215,7 @@
 				<textFieldExpression><![CDATA[$F{PAR_SHORTNAME}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="318" y="0" width="103" height="20"/>
+				<reportElement stretchType="RelativeToBandHeight" x="322" y="0" width="103" height="20"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
