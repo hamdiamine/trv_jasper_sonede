@@ -1,45 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CONTRO_SANS_RELEVE" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isIgnorePagination="true">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CONTRO_SANS_RELEVE" language="groovy" pageWidth="555" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isIgnorePagination="true">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
 	</parameter>
-	<parameter name="plgrel_id" class="java.math.BigDecimal"/>
+	<parameter name="plgrel_id" class="java.lang.Long"/>
 	<queryString>
-		<![CDATA[select
-  sag.sag_refe,
-  spt.spt_refe,
-  equ.equ_realnumber,
-  rou.rou_code,
-  spt.spt_routeorder,
-  par.par_fname||' '||par.par_lname par_shortname
-from   plgrel          plg ,
-       ligne_plgrel    lpg,
-       tecservicepoint spt,
-       agrserviceagr   sag,
-       tecequipment    equ,
-       techequipment   heq,
-       agrcustomeragr  cag,
-       genparty        par,
-       tecroute        rou
-where  plg.plgrel_id = $P{plgrel_id}
-and  lpg.plgrel_id = plg.plgrel_id
-and  rou.rou_id = lpg.rou_id
-and  spt.rou_id = rou.rou_id
-and  spt.spt_id = sag.spt_id
-and  sag.cag_id = cag.cag_id
-and  spt.spt_id = heq.spt_id
-and  heq.equ_id = equ.equ_id
-and  par.par_id = cag.par_id
-and  sag.sag_enddt is null
- and heq.heq_enddt is null
- and not exists (select 1
-                  from  tecmtrread mrd
-                  where mrd.mrd_year = plg.plgrel_year
-                  and   mrd.mrd_multicad = decode(nvl(plg.plgrel_trim,0),0,plg.plgrel_mois,plg.plgrel_trim)
-                  and   mrd.spt_id = spt.spt_id)]]>
+		<![CDATA[select * from v_edition_controle_releve_manque vu where vu.plgrel_id=$P{plgrel_id}]]>
 	</queryString>
 	<field name="SAG_REFE" class="java.lang.String"/>
 	<field name="SPT_REFE" class="java.lang.String"/>
@@ -47,10 +16,18 @@ and  sag.sag_enddt is null
 	<field name="ROU_CODE" class="java.lang.String"/>
 	<field name="SPT_ROUTEORDER" class="java.math.BigDecimal"/>
 	<field name="PAR_SHORTNAME" class="java.lang.String"/>
+	<field name="PLGREL_ID" class="java.math.BigDecimal"/>
 	<pageHeader>
 		<band height="53">
 			<staticText>
-				<reportElement x="38" y="33" width="115" height="20"/>
+				<reportElement mode="Opaque" x="45" y="10" width="465" height="23" backcolor="#F2F2F2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Etat Manque relève]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="45" y="33" width="115" height="20"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -59,12 +36,12 @@ and  sag.sag_enddt is null
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
+					<font fontName="SansSerif" size="8"/>
 				</textElement>
 				<text><![CDATA[PDL	]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="226" y="33" width="27" height="20"/>
+				<reportElement x="233" y="33" width="27" height="20"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -73,12 +50,12 @@ and  sag.sag_enddt is null
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
+					<font fontName="SansSerif" size="8"/>
 				</textElement>
 				<text><![CDATA[Tournée]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="253" y="33" width="31" height="20"/>
+				<reportElement x="260" y="33" width="31" height="20"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -87,12 +64,12 @@ and  sag.sag_enddt is null
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
+					<font fontName="SansSerif" size="8"/>
 				</textElement>
 				<text><![CDATA[Ordre]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="284" y="33" width="125" height="20"/>
+				<reportElement x="291" y="33" width="125" height="20"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -101,12 +78,12 @@ and  sag.sag_enddt is null
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
+					<font fontName="SansSerif" size="8"/>
 				</textElement>
 				<text><![CDATA[Compteur]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="409" y="33" width="94" height="20"/>
+				<reportElement x="416" y="33" width="94" height="20"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -115,12 +92,12 @@ and  sag.sag_enddt is null
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
+					<font fontName="SansSerif" size="8"/>
 				</textElement>
 				<text><![CDATA[Client]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="153" y="33" width="73" height="20"/>
+				<reportElement x="160" y="33" width="73" height="20"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -129,23 +106,16 @@ and  sag.sag_enddt is null
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
+					<font fontName="SansSerif" size="8"/>
 				</textElement>
 				<text><![CDATA[Police]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="66" y="7" width="379" height="23" backcolor="#F2F2F2"/>
-				<textElement textAlignment="Center">
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Etat Manque relève]]></text>
 			</staticText>
 		</band>
 	</pageHeader>
 	<detail>
 		<band height="20">
-			<textField isBlankWhenNull="true">
-				<reportElement x="38" y="0" width="115" height="20"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="45" y="0" width="115" height="20"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -154,12 +124,12 @@ and  sag.sag_enddt is null
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
+					<font fontName="SansSerif" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{SPT_REFE}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="226" y="0" width="27" height="20"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="233" y="0" width="27" height="20"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -168,12 +138,12 @@ and  sag.sag_enddt is null
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
+					<font fontName="SansSerif" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ROU_CODE}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="253" y="0" width="31" height="20"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="260" y="0" width="31" height="20"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -182,12 +152,12 @@ and  sag.sag_enddt is null
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
+					<font fontName="SansSerif" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{SPT_ROUTEORDER}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="284" y="0" width="125" height="20"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="291" y="0" width="125" height="20"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -196,12 +166,12 @@ and  sag.sag_enddt is null
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
+					<font fontName="SansSerif" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{EQU_REALNUMBER}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="409" y="0" width="94" height="20"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="416" y="0" width="94" height="20"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -210,12 +180,12 @@ and  sag.sag_enddt is null
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arabic" size="8" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arabic" size="6" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{PAR_SHORTNAME}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="153" y="0" width="73" height="20"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="160" y="0" width="73" height="20"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -224,7 +194,7 @@ and  sag.sag_enddt is null
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
+					<font fontName="SansSerif" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{SAG_REFE}]]></textFieldExpression>
 			</textField>

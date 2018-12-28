@@ -2,11 +2,11 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="edition_controle_releve_new" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="292"/>
+	<property name="ireport.y" value="155"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
 	</parameter>
-	<parameter name="plgrel_id" class="java.math.BigDecimal">
+	<parameter name="plgrel_id" class="java.lang.Long">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
@@ -42,6 +42,7 @@
 			</image>
 			<image>
 				<reportElement x="14" y="10" width="79" height="79"/>
+				<imageExpression><![CDATA[$P{SUBREPORT_DIR} +"/logo.jpg"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="132" y="104" width="290" height="30" forecolor="#0066CC"/>
